@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>objects</title>
+</head>
+<body>
+
+    <script>
+        var user = {};
+        user.name = 'Vasya';
+        user.surname = 'Petrov';
+        user.name = 'Sergei';
+        delete user.name;
+        //obj is empty ? 
+        function isEmpty(obj) {
+            if (obj.constructor === Object) {
+                for (var key in obj) {
+                    return false;
+                } return true;
+            } return 'Where is the object ?';
+        }
+        var user = {};
+        var users = {Name: 'Alex'};
+
+        var salaries = {'СТР':'str', "Вася": 1000, "Петя": 4300, "Даша": 1250, 'Ваня':600, 'STR':'string' };
+        var salaries2 = {};
+        //summ of num properties
+        function sumSalaries(obj) {
+            if (obj.constructor === Object) {
+                var res = 0;
+                for (var key in obj) {
+                    res += obj[key];
+                } return res;
+            } return 'Error: where is the object ?';
+        }
+        //max salary of workers 
+        function theBiggestSal(obj) {
+            if (obj.constructor === Object) {
+                var value = 0;
+                var name = 'нет сотрудников !';
+                for (var key in obj) {
+                    if (obj[key] > value) {
+                        value = obj[key];
+                        name = key;
+                    } 
+                } return name;
+            }
+            return 'error: where is the object ?'
+        }
+
+        function isNumeric(n) {
+            return !isNaN(parseFloat(n)) && isFinite(n)
+        }
+        //double the num prop
+        function multiplyNumeric(obj) {
+            if (obj.constructor !== Object) return 'not object !';
+                for (var key in obj) {
+                    if (isNumeric(obj[key])) {
+                        obj[key] = (obj[key] * 2);
+                    } 
+                }
+                return obj;           
+        }        
+            
+    </script>
+
+</body>
+</html>

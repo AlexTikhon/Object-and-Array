@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ARRAY2</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            className: 'open menu list list please'
+        }
+        // add value to obj 
+        function addClass(obj, cls) {
+            if (obj.constructor !== Object) return 'not object';
+            if (!obj.className) return obj;
+            var arr = obj.className.split(' ');
+            for (var i = 0; i < arr.length; i++){
+                if (arr[i] === cls) return obj;
+            }
+            arr.push(cls);
+            obj.className = arr.join(' ')            
+        }        
+        //change string to camelCase (replace '-')
+        function camelize(str) {
+            if (str.constructor !== String) return 'not string';
+            var arr = str.split('-');           
+            for (var i = 1; i < arr.length; i++) {
+                arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+            }
+           return arr.join('');           
+        }       
+        //remove class if this class already exists
+        function removeClass(obj, cls) {
+            if (obj.constructor !== Object) return 'not object';
+            if (cls.constructor !== String) return 'not string';
+            var arr = obj.className.split(' ');            
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i] === cls) {                    
+                    arr.splice(i, 1);
+                    --i;
+                }
+            }
+            return obj.className = arr.join(' ');
+        }        
+        var arrayNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+        //delete nums outside the range 
+        function filterRangeInPlace(arr, a, b) {
+            if (arr.constructor !== Array) return 'not array';
+            if (a.constructor !== Number || b.constructor !== Number) return 'wrong arguments';
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i] < a || arr[i] > b) {
+                    arr.splice(i, 1);
+                    --i;
+                }
+            }
+            return arr;
+        }
+        //reverse the array
+        function reverse(arr) {
+            if (arr.constructor !== Array) return 'not array';
+            return arr.reverse();
+        }
+        //sort the array
+        var arrString = ["HTML", "JavaScript", "CSS"];
+        var newArrString = arrString.concat();
+        newArrString.sort();      
+
+        var vasya = { name: "Вася", age: 23 };
+        var masha = { name: "Маша", age: 18 };
+        var vovochka = { name: "Вовочка", age: 6 };
+        var dasha = { name: 'Даша', age: 32 };
+        var people = [vasya, masha, dasha, vovochka];
+
+        function compareAge(a, b) {
+            return a.age - b.age;
+        }
+        //sotr array with sort function
+        function sortByAge(arr) {
+            if (arr.constructor !== Array) return 'not array';
+            arr.sort(compareAge);
+            return arr;
+        }
+       
+        var list = { value: 1 };
+        list.next = { value: 2 };
+        list.next.next = { value: 3 };
+        list.next.next.next = { value: 4 };
+        // get value and push to arr
+        function getValueFromList(list) {
+            if (list.constructor !== Object) return 'not object';
+            var tmp = list;
+            var arr = [];
+            while (tmp) {
+                arr.push(tmp.value);
+                tmp = tmp.next;
+            }
+            return arr;
+        }
+        getValueFromList(list);
+        // print value with recursion
+        function printListValueRekurs(list) {
+            if (list.constructor !== Object) return 'not object';
+            alert(list.value);
+            if (list.next) {
+                printListRekurs(list.next);
+            }
+        }
+        // get value, push to arr and reverse
+        function getValueFromListReverse(list) {
+            if (list.constructor !== Object) return 'not object';
+            var tmp = list;
+            var arr = [];           
+            while (tmp) {
+                arr.push(tmp.value);
+                tmp = tmp.next;
+            }            
+            return arr = arr.reverse();
+        }
+        // print value with recursion and reverse
+        function printValueFromListRekursReverse(list) {
+            if (list.constructor !== Object) return 'not object';            
+            if (list.next) {
+                printValueFromListRekursReverse(list.next);
+            }
+            alert(list.value);
+        }         
+        //del the anogramms 
+        var arrAnogramm = ["воз", "киборг", "корсет", "ЗОВ", "гробик", "костер", "сектор"];
+        function delAnogramm(arr) {
+            if (arr.constructor !== Array) return 'not array';
+            var obj = {};
+            var property = null;
+            var max = arr.length;
+            for (var i = 0; i < max; i++) {
+                property = arr[i].toLowerCase().split('').sort().join('');
+                obj[property] = arr[i];
+            }
+            arr.length = 0;
+            for (var key in obj) arr.push(obj[key]);
+            return arr;
+        }
+
+        var strings = ["кришна", "кришна", "харе", "харе", "харе", "харе", "кришна", "кришна", 'ups', "8-()", 'ups'];
+        //remove repeated strings
+        function uniqueArr(arr) {
+            if (arr.constructor !== Array) return 'not array';
+            var obj = {};
+            var property = null;
+            var max = arr.length;
+            for (var i = 0; i < max; i++) {
+                property = arr[i];
+                obj[property] = arr[i];
+            }
+            arr.length = 0;
+            for (var key in obj) arr.push(obj[key]);
+            return arr;
+        }
+        
+    </script>
+</body>
+</html>

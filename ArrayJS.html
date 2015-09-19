@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ARRAY</title>
+</head>
+<body>
+    <script>
+        var styles = ['Джаз', 'Блюз'];
+        styles.push('Рок-н-Ролл');
+        styles[styles.length - 2] = 'Классика';
+        //alert(styles.shift());
+        styles.unshift('Рэп', 'Регги');
+
+        var arr = ["Яблоко", "Апельсин", "Груша", "Лимон"];
+        var rand = Math.floor(Math.random() * (arr.length));
+        //alert(arr[rand]);
+
+        //sum of entered values
+        function sumOfValues() {
+            var sum = 0;
+            var numbers = [];            
+            while (true) {
+                var value = prompt('Введите число', '');
+                if (value !== '' && value !== null && !isNaN(value)) {
+                    numbers.push(+value);
+                } else break;
+            }
+            for (var i = 0; i < numbers.length; i++) {
+                sum += numbers[i]
+            }
+            return alert(sum);
+        }
+
+        // find value in array and return inedx of value
+        var arrNums = [7, 6, 5, 4, 3, 2, 1, 0];
+        var arrNums2 = [];
+        function find(arr, value) {
+            if (arr.constructor !== Array) return 'not array';
+            if (arr.length === 0) return 'empty array'
+            var max = arr.length;
+            var retValue = -1;
+            for (var i = 0; i < max; i++) {
+                if (arr[i] === value) {
+                    retValue = i;
+                    break;
+                }               
+            }
+            return retValue;
+        }
+       
+        function filterRange(arr, a, b) {
+            if (arr.constructor !== Array) return 'not array';
+            if (isNaN(a) || isNaN(b)) return 'wrong arguments';
+            var max = arr.length;
+            var newarr = [];
+            for (var i = 0; i < max; i++) {
+                if (arr[i] >= a && arr[i] <= b) newarr.push(arr[i]);
+            }       
+            return newarr;
+        }
+        alert(filterRange(arrNums, 2, 5));
+    </script>
+</body>
+</html>
